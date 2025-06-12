@@ -1,6 +1,6 @@
 # Digital Literacy Campaign (DLC) Web App
 
-A modern, accessible, and multilingual React + Vite web application by CollegeTips.in to empower everyone—especially parents, seniors, and beginners—with essential digital skills.
+A modern, accessible, and multilingual React + Vite web application to empower everyone—especially parents, seniors, and beginners—with essential digital skills.
 
 ## Features
 
