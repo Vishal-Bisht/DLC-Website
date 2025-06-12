@@ -1,26 +1,28 @@
 import { StarIcon } from '@heroicons/react/24/solid';
+import { useTranslation } from 'react-i18next';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const testimonials = [
     {
       name: 'Rajesh Kumar',
       age: '65',
       location: 'Delhi',
-      content: 'I learned to video call my grandchildren abroad. The tutorials are so simple!',
+      content: t('I learned to video call my grandchildren abroad. The tutorials are so simple!'),
       rating: 5
     },
     {
       name: 'Kamala Devi',
       age: '58',
       location: 'Chennai',
-      content: 'Now I can do online banking and pay bills myself. Very helpful platform.',
+      content: t('Now I can do online banking and pay bills myself. Very helpful platform.'),
       rating: 5
     },
     {
       name: 'Suresh Patel',
       age: '62',
       location: 'Mumbai',
-      content: 'The voice commands feature helps me navigate easily. Great for seniors!',
+      content: t('The voice commands feature helps me navigate easily. Great for seniors!'),
       rating: 5
     }
   ];
@@ -30,10 +32,10 @@ const Testimonials = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Success Stories
+            {t('Success Stories')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Hear from people who have transformed their digital lives
+            {t('Hear from people who have transformed their digital lives')}
           </p>
         </div>
 
@@ -48,7 +50,7 @@ const Testimonials = () => {
               <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
               <div className="border-t pt-4">
                 <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                <p className="text-sm text-gray-600">Age {testimonial.age}, {testimonial.location}</p>
+                <p className="text-sm text-gray-600">{t('Age')} {testimonial.age}, {testimonial.location}</p>
               </div>
             </div>
           ))}

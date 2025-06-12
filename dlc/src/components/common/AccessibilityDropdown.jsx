@@ -32,10 +32,10 @@ const AccessibilityDropdown = () => {
               <span className="text-sm font-medium text-gray-700">{t('Text Size')}</span>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => setFontSize('small')} className={`px-2 py-1 text-xs rounded ${fontSize === 'small' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A</button>
+              <button onClick={() => setFontSize('small')} className={`px-2 py-1 text-xs rounded ${fontSize === 'small' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A-</button>
               <button onClick={() => setFontSize('normal')} className={`px-2 py-1 text-sm rounded ${fontSize === 'normal' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A</button>
-              <button onClick={() => setFontSize('large')} className={`px-2 py-1 text-base rounded ${fontSize === 'large' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A</button>
-              <button onClick={() => setFontSize('xlarge')} className={`px-2 py-1 text-lg rounded ${fontSize === 'xlarge' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A</button>
+              <button onClick={() => setFontSize('large')} className={`px-2 py-1 text-base rounded ${fontSize === 'large' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A+</button>
+              <button onClick={() => setFontSize('xlarge')} className={`px-2 py-1 text-lg rounded ${fontSize === 'xlarge' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>A++</button>
             </div>
           </div>
           {/* High Contrast */}

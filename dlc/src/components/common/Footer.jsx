@@ -79,10 +79,10 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-400 flex items-center justify-center">
-            {t('Made with')} <HeartIcon className="h-5 w-5 text-red-500 mx-2" /> by Vishal Bisht
+            {t('Made with')} <HeartIcon className="h-5 w-5 text-red-500 mx-2" /> {t('for Digital India')}
           </p>
           <p className="text-sm text-gray-500 mt-2">
-            © 2025 CollegTips - Digital Literacy Campaign. {t('All rights reserved.')}
+            © 2025 DLC - Digital Literacy Campaign. {t('All rights reserved.')}
           </p>
         </div>
       </div>

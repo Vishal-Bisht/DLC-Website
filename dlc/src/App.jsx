@@ -3,7 +3,6 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Home from './components/pages/Home';
 import Tutorials from './components/pages/Tutorials';
-import About from './components/pages/About';
 import AIChat from './components/pages/AIChat';
 import Feedback from './components/pages/Feedback';
 import { AccessibilityProvider } from './components/contexts/AccessibilityContext';
@@ -19,7 +18,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tutorials" element={<Tutorials />} />
-            <Route path="/about" element={<About />} />
             <Route path="/ai-chat" element={<AIChat />} />
             <Route path="/feedback" element={<Feedback />} />
           </Routes>

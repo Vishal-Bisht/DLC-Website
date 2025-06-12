@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChatBubbleBottomCenterTextIcon, XMarkIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import ChatMessage from './ChatMessage';
 import { sendChatMessage } from '../utils/chatbotAPI';
 
@@ -35,10 +36,30 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const response = await sendChatMessage(inputText);
+      // Use OpenAI API for response, but restrict to DLC-related questions
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      const prompt = `You are DigiBuddy, an AI assistant for the Digital Literacy Campaign (DLC). Only answer questions related to digital skills, tutorials, accessibility, or the DLC platform. If the question is not related to DLC, politely say you can only answer DLC-related questions.\nUser: ${inputText}\nDigiBuddy:`;
+      const response = await fetch('https://api.openai.com/v1/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: 'text-davinci-003',
+          prompt,
+          max_tokens: 100,
+          temperature: 0.5,
+          n: 1,
+          stop: ['User:', 'DigiBuddy:']
+        })
+      });
+      const data = await response.json();
+      let answer = data.choices && data.choices[0] && data.choices[0].text ? data.choices[0].text.trim() : "Sorry, I couldn't get a response.";
+      if (!answer) answer = "Sorry, I couldn't get a response.";
       const botMessage = {
         id: messages.length + 2,
-        text: response,
+        text: answer,
         sender: 'bot'
       };
       setMessages(prev => [...prev, botMessage]);
@@ -68,27 +89,29 @@ const Chatbot = () => {
       </button>
 
       {/* Chat Window */}
-      <div className={`fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col transition-all transform ${
+      <div className={`fixed bottom-6 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col transition-all transform ${
         isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
       }`}>
         {/* Header */}
         <div className="bg-blue-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
-              <span className="text-2xl">🤖</span>
+              <SparklesIcon className="h-8 w-8 text-blue-600" />
             </div>
             <div>
               <h3 className="font-semibold">DigiBuddy</h3>
-                            <p className="text-xs opacity-90">Your Digital Assistant</p>
+              <p className="text-xs opacity-90">Your Digital Assistant</p>
             </div>
           </div>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="p-1 hover:bg-white/20 rounded"
-            aria-label="Close chat"
-          >
-            <XMarkIcon className="h-6 w-6" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-1 hover:bg-white/20 rounded"
+              aria-label="Close chat"
+            >
+              <XMarkIcon className="h-6 w-6" />
+            </button>
+          </div>
         </div>
 
         {/* Messages */}

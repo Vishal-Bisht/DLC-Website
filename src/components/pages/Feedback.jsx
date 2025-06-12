@@ -85,8 +85,8 @@ const Feedback = () => {
                 Need immediate help? Reach out to us:
               </p>
               <p className="text-gray-700">
-                <strong>Email:</strong> support@dlc-collegetips.in<br />
-                <strong>Phone:</strong> +91 1800-123-4567<br />
+                <strong>Email:</strong> mail@collegetips.in<br />
+                <strong>Phone:</strong> +91 7024577333 <br />
                 <strong>Hours:</strong> Mon-Sat, 9 AM - 6 PM
               </p>
             </div>

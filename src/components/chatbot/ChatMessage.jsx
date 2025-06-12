@@ -1,3 +1,5 @@
+import { SparklesIcon } from '@heroicons/react/24/outline';
+
 const ChatMessage = ({ message }) => {
   const isBot = message.sender === 'bot';
 
@@ -14,7 +16,7 @@ const ChatMessage = ({ message }) => {
       </div>
       {isBot && (
         <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2 order-1">
-          <span className="text-sm">🤖</span>
+          <span className="text-sm"> <SparklesIcon className="h-8 w-8 text-blue-600" /></span>
         </div>
       )}
     </div>

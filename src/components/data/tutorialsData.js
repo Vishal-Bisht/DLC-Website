@@ -31,7 +31,7 @@ export const tutorialsData = [
     difficulty: 'intermediate',
     duration: '25 mins',
     languages: ['English', 'Hindi', 'Bengali'],
-    thumbnail: 'https://images.unsplash.com/photo-1569163139394-de4798df6b5a?w=400',
+    thumbnail: 'https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400',
     videoUrl: 'https://www.youtube.com/watch?v=example3'
   },
   {

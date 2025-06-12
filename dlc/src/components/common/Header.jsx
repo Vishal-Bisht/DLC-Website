@@ -12,7 +12,7 @@ const Header = () => {
   const navLinks = [
     { name: t('Home'), path: '/' },
     { name: t('Tutorials'), path: '/tutorials' },
-    { name: t('About'), path: '/about' },
+    { name: t('AI Chat'), path: '/ai-chat' },
     { name: t('Feedback'), path: '/feedback' },
   ];
 
@@ -21,9 +21,9 @@ const Header = () => {
       <nav className="container-custom">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center ml-2">
-            <img src="/logo.webp" alt="CollegeTips Logo" className="h-10 w-10 object-contain" />
-            <span className="company_name text-lg ml-2 font-bold text-gray-700">CollegTips.in</span>
+          <Link to="/" className="flex items-center">
+            <span className="text-2xl font-bold text-blue-600">DLC</span>
+            <span className="text-sm ml-2 text-gray-700">Digital Literacy Campaign</span>
           </Link>
 
           {/* Desktop Navigation */}
