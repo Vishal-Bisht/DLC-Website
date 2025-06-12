@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { ChatBubbleBottomCenterTextIcon, XMarkIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import ChatMessage from './ChatMessage';
-import { sendChatMessage } from '../utils/chatbotAPI';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,40 +35,29 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      // Use OpenAI API for response, but restrict to DLC-related questions
-      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-      const prompt = `You are DigiBuddy, an AI assistant for the Digital Literacy Campaign (DLC). Only answer questions related to digital skills, tutorials, accessibility, or the DLC platform. If the question is not related to DLC, politely say you can only answer DLC-related questions.\nUser: ${inputText}\nDigiBuddy:`;
-      const response = await fetch('https://api.openai.com/v1/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-          model: 'text-davinci-003',
-          prompt,
-          max_tokens: 100,
-          temperature: 0.5,
-          n: 1,
-          stop: ['User:', 'DigiBuddy:']
-        })
-      });
-      const data = await response.json();
-      let answer = data.choices && data.choices[0] && data.choices[0].text ? data.choices[0].text.trim() : "Sorry, I couldn't get a response.";
-      if (!answer) answer = "Sorry, I couldn't get a response.";
-      const botMessage = {
-        id: messages.length + 2,
-        text: answer,
-        sender: 'bot'
-      };
-      setMessages(prev => [...prev, botMessage]);
+      // Use hardcoded responses for now
+      const lowerMessage = inputText.toLowerCase();
+      let botReply = "I'd be happy to help! I can assist you with:\n• WhatsApp and messaging apps\n• Making digital payments\n• Video calling\n• Email and internet browsing\n• Online safety\n\nWhat would you like to learn about?";
+      if (lowerMessage.includes('whatsapp')) {
+        botReply = "To use WhatsApp:\n1. Download WhatsApp from Play Store/App Store\n2. Open the app and enter your phone number\n3. Verify with OTP\n4. Add contacts and start chatting!\n\nWould you like to know about specific WhatsApp features?";
+      } else if (lowerMessage.includes('upi') || lowerMessage.includes('payment')) {
+        botReply = "UPI payments are safe and easy:\n1. Download any UPI app (Paytm, PhonePe, Google Pay)\n2. Link your bank account\n3. Create a UPI PIN\n4. You can now send/receive money using phone numbers!\n\nAlways verify the recipient before sending money.";
+      } else if (lowerMessage.includes('video call')) {
+        botReply = "For video calling:\n1. WhatsApp: Open chat > tap video icon\n2. Zoom: Create/join meeting with meeting ID\n3. Google Meet: Use meeting link or code\n\nMake sure your camera and microphone are working!";
+      } else if (lowerMessage.includes('email')) {
+        botReply = "To create an email:\n1. Go to gmail.com\n2. Click 'Create account'\n3. Fill your details\n4. Choose a unique email address\n5. Set a strong password\n\nRemember to keep your password safe!";
+      } else if (lowerMessage.includes('safe') || lowerMessage.includes('security')) {
+        botReply = "Online safety tips:\n1. Never share OTP or passwords\n2. Check for 'https://' in website URLs\n3. Don't click unknown links\n4. Use strong passwords\n5. Keep apps updated\n\nStay alert and stay safe online!";
+      } else if (["hi", "hlo", "hello", "hey"].some(greet => lowerMessage.includes(greet))) {
+        botReply = "Hello! I'm DigiBuddy 👋 How can I help you learn digital skills today?";
+      }
+      setMessages(prev => [...prev, { id: messages.length + 2, text: botReply, sender: 'bot' }]);
     } catch (error) {
-      const errorMessage = {
+      setMessages(prev => [...prev, {
         id: messages.length + 2,
         text: "Sorry, I'm having trouble connecting. Please try again later.",
         sender: 'bot'
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      }]);
     } finally {
       setIsLoading(false);
     }

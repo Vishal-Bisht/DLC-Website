@@ -11,7 +11,7 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container-custom py-12">
+      <div className="container-custom py-12 pl-2">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
