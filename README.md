@@ -36,7 +36,7 @@ To use OpenAI for the chatbot, add a `.env` file:
 VITE_OPENAI_API_KEY=sk-...
 ```
 
-# Check it out here [https://dlc-website-dusky.vercel.app/]
+### Check it out here [https://dlc-website-dusky.vercel.app/]
 
 ## Project Structure
 - `src/components/` — All React components (pages, common, chatbot, home, etc.)
