@@ -49,5 +49,18 @@ VITE_OPENAI_API_KEY=sk-...
 - Update translations in `src/i18n.js` for more languages
 - Adjust theme and branding in `index.css` and component files
 
+## Known Issues & Roadmap
+
+### Current Issues
+- The chatbot currently uses hardcoded responses. OpenAI integration will be done soon.
+- The AI Chat page is accessible only via the floating button, not the navbar.
+- Improve chatbot context-awareness and add more friendly fallback responses.
+- Expand language support and improve translation coverage.
+- Add more interactive tutorials and video content.
+- Enhance accessibility for screen readers and keyboard navigation.
+- Add voice navigation feature
+
+### Contributions are welcome!
+
 ## License
 This project is for educational and non-commercial use. Contact CollegeTips.in for partnership or licensing.
