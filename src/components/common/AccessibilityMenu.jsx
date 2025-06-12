@@ -1,0 +1,1 @@
+// Remove this component, all logic is now in AccessibilityDropdown
